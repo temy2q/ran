@@ -7,7 +7,6 @@ import com.lagradost.cloudstream3.utils.AppUtils.toJson
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.ExtractorLinkType
 import com.lagradost.cloudstream3.utils.INFER_TYPE
-import com.lagradost.cloudstream3.utils.SubtitleFile
 import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.utils.newExtractorLink
 import org.json.JSONObject
@@ -256,13 +255,6 @@ class LadevProvider : MainAPI() {
             if (match != null) return match.groupValues[1]
         }
         return null
-    }
-
-    /** SHA-1 hash for SAPISIDHASH authorization */
-    private fun sha1(input: String): String {
-        val md = MessageDigest.getInstance("SHA-1")
-        val bytes = md.digest(input.toByteArray())
-        return bytes.joinToString("") { "%02x".format(it) }
     }
 
     // ═══════════════════════════════════════════════════════════════
