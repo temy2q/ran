@@ -10,11 +10,7 @@ import com.lagradost.cloudstream3.utils.INFER_TYPE
 import com.lagradost.cloudstream3.utils.SubtitleFile
 import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.utils.newExtractorLink
-import okhttp3.Interceptor
-import okhttp3.Response
 import org.json.JSONObject
-import java.net.URLEncoder
-import java.security.MessageDigest
 
 /**
  * Library of Ladev — CloudStream Provider
@@ -198,7 +194,7 @@ class LadevProvider : MainAPI() {
 
         when (client) {
             YTClient.ANDROID -> {
-                clientMap["androidSdkVersion"] = client.androidSdkVersion!!
+                clientMap["androidSdkVersion"] = client.androidSdkVersion!!.toString()
                 clientMap["platform"] = "MOBILE"
             }
             YTClient.IOS -> {
@@ -740,7 +736,7 @@ class LadevProvider : MainAPI() {
             "$ytMainUrl/watch?v=$videoId"
         }
 
-        return newMovieLoadResponse(data.title, ytUrl, TvType.Movie, loadData.toJson()) {
+        return newMovieLoadResponse(data.title, ytUrl, TvType.Movie, data.toJson()) {
             this.posterUrl = getBestThumbnail(videoId)
             this.plot = plot
         }
@@ -812,7 +808,7 @@ class LadevProvider : MainAPI() {
                         type = INFER_TYPE
                     ) {
                         this.referer = ytMainUrl
-                        this.quality = Qualities.Unknown.value
+                        this.quality = -1
                     }
                 )
                 linksFound = true
@@ -884,7 +880,7 @@ class LadevProvider : MainAPI() {
      * For video-only streams: pair with the best audio stream and build a DASH manifest.
      * For muxed streams: emit directly as legacy links.
      */
-    private fun emitStreams(
+    private suspend fun emitStreams(
         videoStreams: List<VideoStream>,
         audioStreams: List<AudioStream>,
         callback: (ExtractorLink) -> Unit
@@ -953,7 +949,7 @@ class LadevProvider : MainAPI() {
                             type = INFER_TYPE
                         ) {
                             this.referer = ytMainUrl
-                            this.quality = Qualities.Unknown.value
+                            this.quality = -1
                         }
                     )
                     emitted = true
@@ -972,7 +968,7 @@ class LadevProvider : MainAPI() {
                         type = INFER_TYPE
                     ) {
                         this.referer = ytMainUrl
-                        this.quality = Qualities.Unknown.value
+                        this.quality = -1
                     }
                 )
                 emitted = true
@@ -1006,7 +1002,7 @@ class LadevProvider : MainAPI() {
                         type = INFER_TYPE
                     ) {
                         this.referer = ytMainUrl
-                        this.quality = Qualities.Unknown.value
+                        this.quality = -1
                     }
                 )
                 emitted = true
@@ -1104,7 +1100,6 @@ class LadevProvider : MainAPI() {
             TvType.Movie
         ) {
             this.posterUrl = getBestThumbnail(vidId)
-            this.lang = tagsStr
         }
     }
 }
