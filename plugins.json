@@ -1,0 +1,25 @@
+[
+    {
+        "url": "https://raw.githubusercontent.com/temy2q/ran/builds/LibraryOfLadev.cs3",
+        "status": 1,
+        "version": 2,
+        "name": "LibraryOfLadev",
+        "internalName": "LibraryOfLadev",
+        "authors": [
+            "OpenSourceFlix"
+        ],
+        "description": "Library of Ladev - Neuro-sama stream transcript search with YouTube playback",
+        "fileSize": 47451,
+        "repositoryUrl": "https://github.com/temy2q/ran",
+        "language": "en",
+        "tvTypes": [
+            "Movie"
+        ],
+        "iconUrl": "https://www.google.com/s2/favicons?domain=libraryofladev.com&sz=%size%",
+        "apiVersion": 1,
+        "fileHash": "sha256-bada1641d9d797c2d60531bcad040e7ca430aea109b3a843e8e898a69192b008",
+        "jarFileSize": 187650,
+        "jarUrl": "https://raw.githubusercontent.com/temy2q/ran/builds/LibraryOfLadev.jar",
+        "jarHash": "sha256-dabd5493d3ce3a75a7eb1cab563b907c84eb1fa7105d22a4d7423ebf752e04e4"
+    }
+]

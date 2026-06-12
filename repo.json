@@ -1,0 +1,8 @@
+{
+    "name": "Library of Ladev",
+    "description": "Neuro-sama Stream Transcript Search - Browse & search VTuber stream clips with YouTube playback",
+    "manifestVersion": 1,
+    "pluginLists": [
+        "https://raw.githubusercontent.com/temy2q/ran/builds/plugins.json"
+    ]
+}
